@@ -8,6 +8,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -17,7 +18,7 @@ import ddi.gobelins.takenote.R;
 /**
  * A simple {@link Fragment} subclass.
  */
-public class ListNotesFragment extends Fragment {
+public class ListNotesFragment extends Fragment implements NotesAdapter.NotesAdapterListener {
 
 
     public ListNotesFragment() {
@@ -40,7 +41,13 @@ public class ListNotesFragment extends Fragment {
         NotesAdapter notesAdapter = new NotesAdapter(notes);
         recyclerView.setAdapter(notesAdapter);
 
+        notesAdapter.setNotesAdapterListner(this);
+
         return view;
     }
 
+    @Override
+    public void onItemClick(int position) {
+        Toast.makeText(getContext(), "click on item: " + position, Toast.LENGTH_SHORT).show();
+    }
 }
