@@ -4,6 +4,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
 import java.util.List;
 
@@ -40,9 +41,23 @@ public class NotesAdapter extends RecyclerView.Adapter<NotesAdapter.ViewHolder> 
     }
 
     static class ViewHolder extends RecyclerView.ViewHolder {
+        private final TextView noteTitleTv;
+        private final TextView noteDescriptionTv;
 
         public ViewHolder(View itemView) {
             super(itemView);
+
+            noteTitleTv = (TextView) itemView.findViewById(R.id.item_note_title);
+            noteDescriptionTv = (TextView) itemView.findViewById(R.id.item_note_description);
         }
+
+        public TextView getNoteDescriptionTv() {
+            return noteDescriptionTv;
+        }
+
+        public TextView getNoteTitleTv() {
+            return noteTitleTv;
+        }
+
     }
 }
