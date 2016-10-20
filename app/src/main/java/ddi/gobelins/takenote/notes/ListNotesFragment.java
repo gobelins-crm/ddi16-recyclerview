@@ -9,6 +9,9 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import ddi.gobelins.takenote.R;
 
 /**
@@ -30,7 +33,10 @@ public class ListNotesFragment extends Fragment {
 
         RecyclerView recyclerView = (RecyclerView) view.findViewById(R.id.list_notes_recyclerview);
         recyclerView.setLayoutManager(new LinearLayoutManager(view.getContext()));
-        
+
+        List<Note> notes = new ArrayList<>();
+        notes.add(new Note(0, "Le titre", "la description"));
+
         return view;
     }
 
