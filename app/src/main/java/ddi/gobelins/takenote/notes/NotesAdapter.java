@@ -16,9 +16,14 @@ import ddi.gobelins.takenote.R;
 
 public class NotesAdapter extends RecyclerView.Adapter<NotesAdapter.ViewHolder> {
     private List<Note> notes;
+    private static NotesAdapterListener listener;
 
     public NotesAdapter(List<Note> notes) {
         this.notes = notes;
+    }
+
+    public void setNotesAdapterListner(NotesAdapterListener adapterListener) {
+        listener = adapterListener;
     }
 
     @Override
@@ -43,7 +48,7 @@ public class NotesAdapter extends RecyclerView.Adapter<NotesAdapter.ViewHolder> 
         return notes.size();
     }
 
-    static class ViewHolder extends RecyclerView.ViewHolder {
+    static class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
         private final TextView noteTitleTv;
         private final TextView noteDescriptionTv;
 
@@ -52,6 +57,17 @@ public class NotesAdapter extends RecyclerView.Adapter<NotesAdapter.ViewHolder> 
 
             noteTitleTv = (TextView) itemView.findViewById(R.id.item_note_title);
             noteDescriptionTv = (TextView) itemView.findViewById(R.id.item_note_description);
+
+            itemView.setOnClickListener(this);
         }
+
+        @Override
+        public void onClick(View v) {
+            listener.onItemClick(getAdapterPosition());
+        }
+    }
+
+    public interface NotesAdapterListener {
+        void onItemClick(int position);
     }
 }
