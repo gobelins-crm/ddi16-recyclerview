@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">TakeNote</string>
+    <string name="all_notes">All notes</string>
 </resources>
