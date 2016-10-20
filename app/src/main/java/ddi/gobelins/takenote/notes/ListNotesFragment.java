@@ -37,6 +37,9 @@ public class ListNotesFragment extends Fragment {
         List<Note> notes = new ArrayList<>();
         notes.add(new Note(0, "Le titre", "la description"));
 
+        NotesAdapter notesAdapter = new NotesAdapter(notes);
+        recyclerView.setAdapter(notesAdapter);
+
         return view;
     }
 
