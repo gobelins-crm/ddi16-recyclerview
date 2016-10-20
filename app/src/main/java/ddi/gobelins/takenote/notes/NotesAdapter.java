@@ -1,10 +1,13 @@
 package ddi.gobelins.takenote.notes;
 
 import android.support.v7.widget.RecyclerView;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
 import java.util.List;
+
+import ddi.gobelins.takenote.R;
 
 /**
  * Created by louisbl on 10/20/16.
@@ -19,7 +22,11 @@ public class NotesAdapter extends RecyclerView.Adapter<NotesAdapter.ViewHolder> 
 
     @Override
     public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        return null;
+        LayoutInflater layoutInflater = LayoutInflater.from(parent.getContext());
+
+        View itemView = layoutInflater.inflate(R.layout.list_item_note, parent, false);
+
+        return new ViewHolder(itemView);
     }
 
     @Override
