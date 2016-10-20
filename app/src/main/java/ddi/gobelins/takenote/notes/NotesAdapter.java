@@ -32,7 +32,10 @@ public class NotesAdapter extends RecyclerView.Adapter<NotesAdapter.ViewHolder> 
 
     @Override
     public void onBindViewHolder(ViewHolder holder, int position) {
+        Note note = notes.get(position);
 
+        holder.noteDescriptionTv.setText(note.description);
+        holder.noteTitleTv.setText(note.title);
     }
 
     @Override
@@ -44,20 +47,11 @@ public class NotesAdapter extends RecyclerView.Adapter<NotesAdapter.ViewHolder> 
         private final TextView noteTitleTv;
         private final TextView noteDescriptionTv;
 
-        public ViewHolder(View itemView) {
+        ViewHolder(View itemView) {
             super(itemView);
 
             noteTitleTv = (TextView) itemView.findViewById(R.id.item_note_title);
             noteDescriptionTv = (TextView) itemView.findViewById(R.id.item_note_description);
         }
-
-        public TextView getNoteDescriptionTv() {
-            return noteDescriptionTv;
-        }
-
-        public TextView getNoteTitleTv() {
-            return noteTitleTv;
-        }
-
     }
 }
